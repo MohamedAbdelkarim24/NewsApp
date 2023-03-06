@@ -1,4 +1,4 @@
-package com.route.newsapp.api.model
+package com.route.newsapp.api.model.sourcesResponse
 
 import com.google.gson.annotations.SerializedName
 

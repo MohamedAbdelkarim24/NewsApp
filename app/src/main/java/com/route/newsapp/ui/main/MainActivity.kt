@@ -2,15 +2,9 @@ package com.route.newsapp.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import com.route.newsapp.R
-import com.route.newsapp.api.ApiManager
-import com.route.newsapp.api.model.SourcesResponse
 import com.route.newsapp.databinding.ActivityMainBinding
 import com.route.newsapp.ui.category.CategoryFragment
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     lateinit var viewBinding: ActivityMainBinding

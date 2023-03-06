@@ -9,11 +9,13 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.gson.Gson
+import com.route.newsapp.R
 import com.route.newsapp.api.ApiConstants
 import com.route.newsapp.api.ApiManager
-import com.route.newsapp.api.model.SourcesItem
-import com.route.newsapp.api.model.SourcesResponse
+import com.route.newsapp.api.model.sourcesResponse.SourcesItem
+import com.route.newsapp.api.model.sourcesResponse.SourcesResponse
 import com.route.newsapp.databinding.FragmentCategoryBinding
+import com.route.newsapp.ui.news.NewsFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,6 +34,10 @@ class CategoryFragment:Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loadNews()
+        childFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container,NewsFragment())
+            .commit()
     }
 
     private fun loadNews() {
@@ -51,7 +57,8 @@ class CategoryFragment:Fragment() {
                         //errorBody type of string this is json we should convert it to object of sourcesResponse
                         //we will use fun fromjson
                         val gson=Gson()
-                       val errorResponse= gson.fromJson(response.errorBody()?.string(),SourcesResponse::class.java)
+                       val errorResponse= gson.fromJson(response.errorBody()?.string(),
+                           SourcesResponse::class.java)
                         showErrorMessage(errorResponse.message)
                     }
 
